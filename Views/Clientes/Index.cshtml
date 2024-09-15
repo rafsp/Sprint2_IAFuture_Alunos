@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Sprint2.Models.Cliente>
+
+<h1>Clientes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Cliente</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Data de Nascimento</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.Id_cliente</td>
+                <td>@cliente.Nome</td>
+                <td>@cliente.Email</td>
+                <td>@cliente.Data_nascimento.ToShortDateString()</td>
+                <td>@cliente.Cpf</td>
+                <td>@cliente.Telefone</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@cliente.Id_cliente" class="btn btn-primary">Editar</a>
+                    <a asp-action="Details" asp-route-id="@cliente.Id_cliente" class="btn btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@cliente.Id_cliente" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

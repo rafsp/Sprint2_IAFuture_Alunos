@@ -1,0 +1,33 @@
+﻿@model Sprint2.Models.InteracaoCliente
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Id_cliente" class="control-label">Cliente:</label>
+        <select asp-for="Id_cliente" class="form-control">
+            <option value="">Selecione um cliente</option>
+            @foreach (var cliente in ViewBag.Clientes)
+            {
+                <option value="@cliente.Value">@cliente.Text</option>
+            }
+        </select>
+        <span asp-validation-for="Id_cliente" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Data_interacao" class="control-label">Data da Interacao:</label>
+        <input asp-for="Data_interacao" class="form-control" />
+        <span asp-validation-for="Data_interacao" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Tipo" class="control-label">Tipo:</label>
+        <input asp-for="Tipo" class="form-control" />
+        <span asp-validation-for="Tipo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Canal" class="control-label">Canal:</label>
+        <input asp-for="Canal" class="form-control" />
+        <span asp-validation-for="Canal" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Cadastro>
+
+<h1>Lista de Cadastros</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>CNPJ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cadastro in Model)
+        {
+            <tr>
+                <td>@cadastro.Nome</td>
+                <td>@cadastro.Telefone</td>
+                <td>@cadastro.Endereco</td>
+                <td>@cadastro.Cnpj</td>
+            </tr>
+        }
+    </tbody>
+</table>

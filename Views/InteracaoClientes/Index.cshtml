@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Sprint2.Models.InteracaoCliente>
+
+<h1>Interacoes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Interacao ID</th>
+            <th>Cliente ID</th>
+            <th>Data da Interacao</th>
+            <th>Tipo</th>
+            <th>Canal</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var interacao in Model)
+        {
+            <tr>
+                <td>@interacao.Id_interacao</td>
+                <td>@interacao.Cliente?.Nome</td> <!-- Usando o operador de navegação segura (?) para evitar NullReferenceException -->
+                <td>@interacao.Data_interacao</td>
+                <td>@interacao.Tipo</td>
+                <td>@interacao.Canal</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@interacao.Id_interacao" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@interacao.Id_interacao" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@interacao.Id_interacao" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

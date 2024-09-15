@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Sprint2.Models.FeedbackCliente>
+
+<h1>Feedbacks</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Feedback ID</th>
+            <th>Cliente ID</th>
+            <th>Data do Feedback</th>
+            <th>Comentário</th>
+            <th>Avaliação</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model)
+        {
+            <tr>
+                <td>@feedback.Id_feedback</td>
+                <td>@feedback.Cliente?.Nome</td> <!-- Usando o operador de navegação segura (?) para evitar NullReferenceException -->
+                <td>@feedback.Data_feedback</td>
+                <td>@feedback.Comentario</td>
+                <td>@feedback.Avaliacao</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@feedback.Id_feedback" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@feedback.Id_feedback" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@feedback.Id_feedback" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+</table>
